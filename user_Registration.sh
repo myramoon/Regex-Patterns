@@ -1,6 +1,7 @@
 #!/usr/local/bin/bash
 
-#PURPOSE: Add validation pattern for last name
+
+#PURPOSE: Add validation pattern for Email Id
 
 
 # Validation pattern for first name
@@ -32,11 +33,24 @@ function validateLastName()
 	fi
 }
 
+
+#Validation pattern for Email id
+function validateEmailId()
+{
+	read -p "Enter your email id:" emailid
+	
+	pattern_EmailId="^[A-Za-z0-9]+([-\.\+\_]{1}[0-9A-Za-z]+)*@[A-Za-z0-9]+.[a-zA-Z]{2,4}([\.\,]{1}[a-z]{2,3}){1}$"
+	if [[ $emailid =~ $pattern_EmailId ]]
+	then
+		echo Valid
+	else
+		echo Invalid
+	fi
+}
+
 validateFirstName
 validateLastName
-
-
-
+validateEmailId
 
 
 
