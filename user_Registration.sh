@@ -1,7 +1,9 @@
 #!/usr/local/bin/bash
 
-# Validation pattern for first name
+#PURPOSE: Add validation pattern for last name
 
+
+# Validation pattern for first name
 function validateFirstName()
 {
 	read -p "Enter your first name:" firstname
@@ -15,9 +17,23 @@ function validateFirstName()
 	fi
 }
 
+
+# Validation pattern for last name
+function validateLastName()
+{
+	read -p "Enter your last name:" lastname
+	
+	pattern_LastName="^[A-Z]{1}[a-z]{2,}$"
+	if [[ $lastname =~ $pattern_LastName ]]
+	then
+		echo Valid
+	else
+		echo Invalid
+	fi
+}
+
 validateFirstName
-
-
+validateLastName
 
 
 
