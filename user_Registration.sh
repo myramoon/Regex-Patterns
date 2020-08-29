@@ -1,6 +1,6 @@
 #!/usr/local/bin/bash
 
-#PURPOSE: Add validation pattern for Mobile Number
+#PURPOSE: Add validation pattern for Password Condition1: Minimum 8 characters
 
 
 # Validation pattern for first name
@@ -51,32 +51,34 @@ function validateEmailId()
 #Validation pattern for Mobile number
 function validateMobileNumber()
 {
-	read -p "Enter your mobile number:" mobilenumber
-	pattern_MobileNumber="^([1-9][0-9]){1}[[:space:]]{1}[1-9]{1}[0-9]{9}$"
-	if [[ $mobilenumber =~ $pattern_MobileNumber ]]
+        read -p "Enter your mobile number:" mobilenumber
+        pattern_MobileNumber="^([1-9][0-9]){1}[[:space:]]{1}[1-9]{1}[0-9]{9}$"
+        if [[ $mobilenumber =~ $pattern_MobileNumber ]]
+        then
+                echo Valid
+        else
+                echo Invalid
+        fi
+}
+
+function validatePassword()
+{
+	read -p "Enter your password:" password
+	pattern_Password1="^[A-Za-z0-9]{8,}$"
+	if [[ $password =~ $pattern_Password1 ]]
 	then
 		echo Valid
 	else
-		echo Invalid
+		echo Invalid password: Password should contain minimum 8characters
 	fi
 }
-
+ 
 
 validateFirstName
 validateLastName
 validateEmailId
 validateMobileNumber
-
-
-
-
-
-
-
-
-
-
-
+validatePassword
 
 
 
