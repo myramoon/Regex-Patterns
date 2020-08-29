@@ -1,6 +1,6 @@
 #!/usr/local/bin/bash -x
 
-#PURPOSE: Add validation pattern for Password Condition 3: Must contain at least 1 digit
+#PURPOSE: Add validation pattern for Password Condition 4: Must contain exactly 1 special character. 
 
 # Validation pattern for first name
 function validateFirstName()
@@ -63,17 +63,25 @@ function validateMobileNumber()
 function validatePassword()
 {
 	read -p "Enter your password:" password
-	pattern_Password1="^[A-Za-z0-9]{8,}"
+	pattern_Password1="^.{8,}"
 	pattern_Password2="[A-Z]{1,}"
 	pattern_Password3="[0-9]{1,}"
+	pattern_Password4="^[0-9A-Za-z]*[\!\@\#\$\%\&][A-Za-z0-9]*$"
 	if [[ $password =~ $pattern_Password1 ]]
 	then
 		if [[ $password =~ $pattern_Password2 ]]
 		then
-			echo Valid
 			if [[ $password =~ $pattern_Password3 ]]
 			then
-				echo Valid
+				if [[ $password =~ $pattern_Password4 ]]
+				then
+				
+					echo Valid
+				
+				else
+					
+					echo Invalid password: Password should contain exactly 1 special character.
+				fi
 			else
 				echo Invalid password: Password should contain at least 1 digit.
 			fi
@@ -92,9 +100,5 @@ validateLastName
 validateEmailId
 validateMobileNumber
 validatePassword
-
-
-
-
 
 
